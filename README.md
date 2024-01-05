@@ -21,7 +21,7 @@
 - Removed duplicate \[product code\] entries.
 - Cleaned the \[weight\] column by splitting numbers and units, replacing blanks and error values and converting all weights to kg using 
 ```
-Weight (kg) = IF(Products\[Units\] <> "kg", Products\[Weight\]/1000, Products\[Weight\])
+Weight (kg) = IF(Products[Units] <> "kg", Products[Weight]/1000, Products[Weight])
 ```
 
 **dim_customers table:**
