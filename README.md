@@ -62,3 +62,8 @@ Created the following measures:
 - ```Total Revenue = SUMX(Orders, Orders[Product Quantity] * RELATED(Products[sale_price]))```
 - ```Profit YTD = CALCULATE([Total Profit], Dates[Year] == YEAR(TODAY()))```
 - ```Revenue YTD = CALCULATE([Total Revenue], Dates[Year] == YEAR(TODAY()))```
+
+## Database model
+
+![Power BI model](Power_BI_model.png)
+
