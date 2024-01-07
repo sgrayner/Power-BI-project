@@ -67,3 +67,24 @@ Created the following measures:
 
 ![Power BI model](Power_BI_model.png)
 
+## Report pages
+
+- Executive Summary
+
+**Customer Detail**
+
+- Headline card visuals highlighting the number of unique customers and the average revenue from each customer.
+- Donut chart showing the proportions of sales in the United Kingdom, United States and Germany.
+- Column chart showing the numbers of customers purchasing within each product category.
+- Line chart showing the number of customers on the y-axis against a time hierarchy on the x-axis. Drill down capabilities through years, quarters and months.
+- 10 period forecast added to the line chart.
+- Table of top 20 customers by revenue, showing full name, revenue and quantity of products ordered. Data bars added to revenue column.
+- Set of three card visual showing the name, revenue and number of orders of the top customer by revenue.
+- Data slicer allowing user to scroll through different years.
+
+<img align="left" src="Line_chart_setup.png" alt="Line chart setup" width="400"/>
+<img align="left" src="Table_setup.png" alt="Table setup" width="400"/> <br><br>
+
+
+![Customer Detail page](Customer_detail_page.png)
+
