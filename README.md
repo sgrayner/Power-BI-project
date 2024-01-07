@@ -69,7 +69,19 @@ Created the following measures:
 
 ## Report pages
 
-- Executive Summary
+**Executive Summary**
+
+- Headline card visuals highlighting total revenue, total profit and total customer orders.
+- Donut charts breaking down revenue by country and store type.
+- Line chart showing total revenue over a time hierarchy. Drill down capabilities through years, quarters and months.
+- Bar chart of customer orders by product category.
+- Key performance indicators for profit, revenue and customer orders over quarters. With a target of a 5% increase on the previous quarter.
+
+<img align="left" src="Top10_table_setup.png" alt="Top 10 table setup" width="500"/>
+<img align="left" src="KPI_setup.png" alt="KPI setup" width="400"/> <br><br>
+
+
+![Executive Summary page](Exec_summary_page.png)
 
 **Customer Detail**
 
@@ -83,8 +95,9 @@ Created the following measures:
 - Data slicer allowing user to scroll through different years.
 
 <img align="left" src="Line_chart_setup.png" alt="Line chart setup" width="400"/>
-<img align="left" src="Table_setup.png" alt="Table setup" width="400"/> <br><br>
+<img align="left" src="Table_setup.png" alt="Table setup" width="500"/> <br><br>
 
 
 ![Customer Detail page](Customer_detail_page.png)
+
 
