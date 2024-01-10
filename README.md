@@ -137,3 +137,7 @@ Created the following measures:
 - Scatter graph of total quantity vs profit per item. Points are categorised by product category.
 - Created a slicer panel containing slicers for filtering by product category and by country. The panel can be opened and closed by action buttons which operate using bookmarks.
 - Added card visuals showing the current category and country filter selected from the slicer panel.
+
+<img align="left" src="Product_slicer_open.png" alt="Product slicer open" width="400"/> <br><br>
+
+![Product Detail page](Product_slicer_closed.png)
