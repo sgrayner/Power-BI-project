@@ -60,8 +60,37 @@ Created the following measures:
 - ```Total Quantity = SUM(Orders[Product Quantity])```
 - ```Total Profit = SUMX(Orders, Orders[Product Quantity] * (RELATED(Products[sale_price]) - RELATED(Products[cost_price])))```
 - ```Total Revenue = SUMX(Orders, Orders[Product Quantity] * RELATED(Products[sale_price]))```
+
+
 - ```Profit YTD = CALCULATE([Total Profit], Dates[Year] == YEAR(TODAY()))```
 - ```Revenue YTD = CALCULATE([Total Revenue], Dates[Year] == YEAR(TODAY()))```
+
+- ```Profit per Order = [Total Profit]/[Total Orders]```
+- ```Revenue per Customer = [Total Revenue] / [Total Customers]```
+
+
+- ```Product category selection = IF(ISFILTERED(Products[category]), CONCATENATEX(VALUES(Products[category]), Products[category], ", "), "All selected")```
+- ```Country selection = IF(ISFILTERED(dim_stores[country]), CONCATENATEX(VALUES(dim_stores[country]), dim_stores[country], ", "), "All selected")```
+
+
+- ```Previous Quarter Orders = CALCULATE([Total Orders], PREVIOUSQUARTER(Dates[Date]))```
+- ```Previous Quarter Profit = CALCULATE([Total Profit], PREVIOUSQUARTER(Dates[Date]))```
+- ```Previous Quarter Revenue = CALCULATE([Total Revenue], PREVIOUSQUARTER(Dates[Date]))```
+
+
+- ```Current Quarter Orders = CALCULATE([Total Orders], DATESINPERIOD(Dates[Date], STARTOFQUARTER(Dates[Date]), 1, QUARTER))```
+- ```Current Quarter Profits = CALCULATE([Total Profit], DATESINPERIOD(Dates[Date], STARTOFQUARTER(Dates[Date]), 1, QUARTER))```
+- ```Current Quarter Revenue = CALCULATE([Total Revenue], DATESINPERIOD(Dates[Date], STARTOFQUARTER(Dates[Date]), 1, QUARTER))```
+
+
+- ```5% Orders target = 1.05 * [Previous Quarter Orders]```
+- ```5% Profit target = 1.05 * [Previous Quarter Profit]```
+- ```5% Revenue target = 1.05 * [Previous Quarter Revenue]```
+
+
+- ```10% Orders target = 1.1 * [Current Quarter Orders]```
+- ```10% Profit target = 1.1 * [Current Quarter Profits]```
+- ```10% Revenue target = 1.1 * [Current Quarter Revenue]```
 
 ## Database model
 
@@ -100,4 +129,11 @@ Created the following measures:
 
 ![Customer Detail page](Customer_detail_page.png)
 
+**Product Detail**
 
+- Gauge visuals showing current quarter performance of customer orders, revenue and profit against a target of a 10% increase from the previous quarter.
+- Area chart showing the revenue from the different categories of products over time.
+- Table of top 10 products by revenue. Including product description, revenue, number of customers, number of orders and profit per order.
+- Scatter graph of total quantity vs profit per item. Points are categorised by product category.
+- Created a slicer panel containing slicers for filtering by product category and by country. The panel can be opened and closed by action buttons which operate using bookmarks.
+- Added card visuals showing the current category and country filter selected from the slicer panel.
