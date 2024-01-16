@@ -92,6 +92,17 @@ Created the following measures:
 - ```10% Profit target = 1.1 * [Current Quarter Profits]```
 - ```10% Revenue target = 1.1 * [Current Quarter Revenue]```
 
+- ```20% Profit target =
+  VAR CurrentYearProfit = [Profit YTD]
+  VAR PreviousYearProfit = CALCULATE([Profit YTD], DATEADD(Dates[Date], -1, YEAR))
+  VAR TargetGrowth = 0.2
+  RETURN
+  IF(ISBLANK(PreviousYearProfit), BLANK(), PreviousYearProfit * (1 + TargetGrowth))```
+
+- ```20% Revenue target =
+  
+  
+
 ## Database model
 
 ![Power BI model](Power_BI_model.png)
@@ -137,3 +148,30 @@ Created the following measures:
 - Scatter graph of total quantity vs profit per item. Points are categorised by product category.
 - Created a slicer panel containing slicers for filtering by product category and by country. The panel can be opened and closed by action buttons which operate using bookmarks.
 - Added card visuals showing the current category and country filter selected from the slicer panel.
+
+<img align="left" src="Product_slicer_open.png" alt="Product slicer open" width="400"/> <br><br>
+
+![Product Detail page](Product_slicer_closed.png)
+
+
+**Stores Map**
+
+- Map visual showing locations of stores. Drill down capabiities through region, country, country region and store code. Year-to-date profit shown as a tooltip for each location.
+- Slicer to filter by country. Select all option is enabled.
+- Ability to drill through to the **Stores Drillthrough** page showing visuals for the selected country or country region.
+
+**Stores Drillthrough**
+
+- Table of top 5 products by revenue showing product description, year-to-date profit, total orders and total revenue.
+- Column chart showing total orders by product category.
+- Gauges for year-to-date profit and revenue against a target of a 20% year-on-year increase.
+- Card visuals showing the currently selected store and country region the store is located in.
+
+**Stores tooltip page**
+
+- Gauge visual showing the year-to-date profit for a selected region, country or country region.
+
+<img align="left" src="Stores_map_visual.png" alt="Stores map visual" width="400"/> <br><br>
+<img align="left" src="Drillthrough.png" alt="Stores drillthrough page" width="400"/> <br><br>
+
+![Tooltip page](Tooltip.png)
