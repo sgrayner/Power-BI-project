@@ -109,6 +109,10 @@ Created the following measures:
 
 ## Report pages
 
+**Navigation bar**
+
+The navigation bar provides page navigation buttons to move between the pages: 'Executive Summary', 'Customer Detail', 'Product Detail' and 'Stores Map'. The 'Product Detail' page also contains a filter button which uses bookmark states to bring a filter pane onto the screen to allow the user to filter the page by country and product category. The 'Stores Drillthrough' page which is accessed from the 'Stores Map' page also contains a back button to allow the user to return back to the 'Stores Map' page.
+
 **Executive Summary**
 
 - Headline card visuals highlighting total revenue, total profit and total customer orders.
@@ -116,6 +120,8 @@ Created the following measures:
 - Line chart showing total revenue over a time hierarchy. Drill down capabilities through years, quarters and months.
 - Bar chart of customer orders by product category.
 - Key performance indicators for profit, revenue and customer orders over quarters. With a target of a 5% increase on the previous quarter.
+- Table showing top 10 products by quantity sold.
+- Interactions adjusted so that the bar chart and the table visuals do not filter the card visuals or KPIs.
 
 <img align="left" src="Top10_table_setup.png" alt="Top 10 table setup" width="500"/>
 <img align="left" src="KPI_setup.png" alt="KPI setup" width="400"/> <br><br>
@@ -127,12 +133,15 @@ Created the following measures:
 
 - Headline card visuals highlighting the number of unique customers and the average revenue from each customer.
 - Donut chart showing the proportions of sales in the United Kingdom, United States and Germany.
-- Column chart showing the numbers of customers purchasing within each product category.
+- Donut chart showing the numbers of customers purchasing within each product category.
 - Line chart showing the number of customers on the y-axis against a time hierarchy on the x-axis. Drill down capabilities through years, quarters and months.
 - 10 period forecast added to the line chart.
 - Table of top 20 customers by revenue, showing full name, revenue and quantity of products ordered. Data bars added to revenue column.
 - Set of three card visual showing the name, revenue and number of orders of the top customer by revenue.
 - Data slicer allowing user to scroll through different years.
+- Table visual does not filter other visuals.
+- Product category donut chart does not filter the line chart.
+- Product category donut chart cross filters with the country donut chart.
 
 <img align="left" src="Line_chart_setup.png" alt="Line chart setup" width="400"/>
 <img align="left" src="Table_setup.png" alt="Table setup" width="500"/> <br><br>
@@ -148,6 +157,7 @@ Created the following measures:
 - Scatter graph of total quantity vs profit per item. Points are categorised by product category.
 - Created a slicer panel containing slicers for filtering by product category and by country. The panel can be opened and closed by action buttons which operate using bookmarks.
 - Added card visuals showing the current category and country filter selected from the slicer panel.
+- The scatter graph and table do not filter any other visuals on the page.
 
 <img align="left" src="Product_slicer_open.png" alt="Product slicer open" width="400"/> <br><br>
 
