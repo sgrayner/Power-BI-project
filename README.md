@@ -1,5 +1,27 @@
 # Power-BI-project
 
+## File structure
+
+```
+├── src
+│   ├── controller
+│   │   ├── **/*.css
+│   ├── views
+│   ├── model
+│   ├── index.js
+├── public
+│   ├── css
+│   │   ├── **/*.css
+│   ├── images
+│   ├── js
+│   ├── index.html
+├── dist (or build
+├── node_modules
+├── package.json
+├── package-lock.json
+└── .gitignore
+```
+
 ## Data sources
 
 - Orders table - Azure SQL Database
