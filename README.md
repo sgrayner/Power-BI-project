@@ -27,7 +27,7 @@
         <li><a href="#product-detail">Product Detail page</a></li>
         <li><a href="#stores-map">Stores Map page</a></li>
         <li><a href="#stores-drillthrough">Stores Drillthrough page</a></li>
-        <li><a href="#stores-tooltip">Stores Tooltip page</a></li>
+        <li><a href="#stores-tooltip-page">Stores Tooltip page</a></li>
         </ul>
     </li>
     <li>
