@@ -19,7 +19,7 @@ git clone https://github.com/sgrayner/EDA-Manufacturing.git
 For details on the construction and formatting of the tables and report visuals in this project, visit the wiki here: https://github.com/sgrayner/Power-BI-project/wiki
 
 ***
-## File structure
+## Github repository structure
 
 ```
 ├── Report_images
@@ -90,54 +90,53 @@ For details on the construction and formatting of the tables and report visuals 
 ***
 ## Report pages
 
-### **Navigation bar**
+<img align="right" src="https://github.com/sgrayner/Power-BI-project/blob/main/Report_images/Nav_bar.png" alt="Navigation bar" width="300"/>
 
-The navigation bar provides page navigation buttons to move between the pages of the report. Hovering over a button will tell the user which page the button links to.
+
+
+### **Navigation bar** 
+
+The navigation bar provides page navigation buttons to move between the pages of the report. Hovering over a button will tell the user which page the button links to. 
+
+
 
 ### **Executive Summary**
 
 This page gives an overview of the company's performace as a whole, allowing executives to quickly check outcomes against targets.
 
-<img align="left" src="Top10_table_setup.png" alt="Top 10 table setup" width="500"/>
-<img align="left" src="KPI_setup.png" alt="KPI setup" width="400"/> <br><br>
+![Executive Summary page](https://github.com/sgrayner/Power-BI-project/blob/main/Report_images/Executive_summary_page.png)
 
-
-![Executive Summary page](Exec_summary_page.png)
 
 ### **Customer Detail**
 
 This page gives customer-level analyses, including a slicer to analyse across different years.
 
-<img align="left" src="Line_chart_setup.png" alt="Line chart setup" width="400"/>
-<img align="left" src="Table_setup.png" alt="Table setup" width="500"/> <br><br>
-
-
-![Customer Detail page](Customer_detail_page.png)
+![Customer Detail page](https://github.com/sgrayner/Power-BI-project/blob/main/Report_images/Customer_detail_page.png)
 
 ### **Product Detail**
 
 This page provides an in-depth look at which products in the company's inventory are selling well. It also contains a filter pane which allows filtering by product category and country.
 
-<img align="left" src="Product_slicer_open.png" alt="Product slicer open" width="400"/> <br><br>
-
-![Product Detail page](Product_slicer_closed.png)
+![Product Detail page](https://github.com/sgrayner/Power-BI-project/blob/main/Report_images/Product_detail_page.png)
 
 ### **Stores Map**
 
 This page uses a map visual to allow the user to easily check on the relative performances of stores between continents, countries and districts. It also allows users to quickly check if a region is meeting its profit target.
 
+![Stores Map page](https://github.com/sgrayner/Power-BI-project/blob/main/Report_images/Stores_map_visual.png)
+
 ### **Stores Drillthrough**
 
 This drillthrough page gives further details on a region or store drilled through from the stores map.
+
+![Stores Drillthrough page](https://github.com/sgrayner/Power-BI-project/blob/main/Report_images/Stores_drillthrough_page.png)
 
 ### **Stores tooltip page**
 
 This page contains the gauge used for the profit target in the stores map.
 
-<img align="left" src="Stores_map_visual.png" alt="Stores map visual" width="400"/> <br><br>
-<img align="left" src="Drillthrough.png" alt="Stores drillthrough page" width="400"/> <br><br>
+<img align="left" src="https://github.com/sgrayner/Power-BI-project/blob/main/Report_images/Tooltip_page.png" alt="Stores tooltip" width="800"/> <br><br>
 
-![Tooltip page](Tooltip.png)
 
 ***
 ## SQL queries
