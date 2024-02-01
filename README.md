@@ -136,11 +136,13 @@ For details on the construction and formatting of the tables and report visuals 
 
 <img align="right" src="https://github.com/sgrayner/Power-BI-project/blob/main/Report_images/Nav_bar.png" alt="Navigation bar" width="300"/>
 
-
 <!-- NAVIGATION BAR -->
 ### **Navigation bar** 
 
 The navigation bar provides page navigation buttons to move between the pages of the report. Hovering over a button will tell the user which page the button links to. 
+
+<br clear="all"/> <!-- Clears the alignment of images -->
+---
 
 
 <!-- EXECUTIVE SUMMARY -->
@@ -183,8 +185,7 @@ This drillthrough page gives further details on a region or store drilled throug
 
 This page contains the gauge used for the profit target in the stores map.
 
-<img align="left" src="https://github.com/sgrayner/Power-BI-project/blob/main/Report_images/Tooltip_page.png" alt="Stores tooltip" width="800"/> <br><br>
-
+![Stores Tooltip](https://github.com/sgrayner/Power-BI-project/blob/main/Report_images/Tooltip_page.png)
 
 ***
 <!-- SQL QUERIES -->
