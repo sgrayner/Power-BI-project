@@ -1,149 +1,102 @@
 # Power-BI-project
 
+***
+## Project Description
+
+This project creates a Power BI report giving a high level summary for executives of a business as well as customer, product and region analysis. The project involves acquiring data from various sources, constructing a star-schema database model and creating an interactive, multi-page report.
+
+***
+## Installation Instructions
+
+Clone the github repostory by running the following command in a terminal.
+```
+git clone https://github.com/sgrayner/EDA-Manufacturing.git
+```
+
+***
+## Wiki
+
+For details on the construction and formatting of the tables and report visuals in this project, visit the wiki here: https://github.com/sgrayner/Power-BI-project/wiki
+
+***
 ## File structure
 
 ```
-├── src
-│   ├── controller
-│   │   ├── **/*.css
-│   ├── views
-│   ├── model
-│   ├── index.js
-├── public
-│   ├── css
-│   │   ├── **/*.css
-│   ├── images
-│   ├── js
-│   ├── index.html
-├── dist (or build
-├── node_modules
-├── package.json
-├── package-lock.json
-└── .gitignore
+├── Report_images
+│   ├── Customer_detail_page.png
+│   │── Executive_summary_page.png 
+│   ├── KPI_setup.png
+│   ├── Line_chart_setup.png
+│   ├── Power_BI_model.png
+|   ├── Product_detail_page.png
+|   ├── Product_slicer_open.png
+|   ├── Stores_drillthrough_page.png
+|   ├── Stores_map_visual.png
+|   ├── Table_setup.png
+|   ├── Tooltip_page.png
+|   ├── Top10_table_setup.png
+├── SQL_queries
+│   ├── question_1.csv
+│   ├── question_1.sql
+│   ├── question_2.csv
+│   ├── question_2.sql
+│   ├── question_3.csv
+│   ├── question_3.sql
+│   ├── question_4.csv
+│   ├── question_4.sql
+│   ├── question_5.csv
+│   ├── question_5.sql
+├── SQL_table_columns
+│   ├── country_region_columns.csv
+│   ├── dim_customer_columns.csv
+│   ├── dim_date_columns.csv
+│   ├── dim_product_columns.csv
+│   ├── dim_store_columns.csv
+│   ├── forquerying2_columns.csv
+│   ├── forview_columns.csv
+│   ├── my_store_overviews_2_columns.csv
+│   ├── my_store_overviews_columns.csv
+│   ├── my_store_overviewsnew_columns.csv
+│   ├── new_store_overviews_columns.csv
+│   ├── orders_columns.csv
+│   ├── orders_columns.png
+│   ├── table_names.csv
+│   ├── table_list.png
+│   ├── test_columns.csv
+│   ├── test_store_overviews_2_columns.csv
+│   ├── test_store_overviews_columns.csv
+├── navigation_bar_images
+│   ├── Customer_icon.png
+│   ├── Customer_icon_blue.png
+│   ├── Dashboard_icon.png
+│   ├── Dashboard_icon_blue.png
+│   ├── Filter_icon.png
+│   ├── Filter_icon_blue.png
+│   ├── Map_icon.png
+│   ├── Map_icon_blue.png
+│   ├── Product_icon.png
+│   ├── Product_icon_blue.png
+│   ├── stores_default.png
+│   ├── stores_hover.png
+├── Power_BI_project.pbix
+└── README.md
 ```
 
-## Data sources
-
-- Orders table - Azure SQL Database
-- dim_products table - Imported from csv
-- dim_stores table - Azure blob storage
-- dim_customers table - Imported and combined from csv files in a zip folder
-
-## Table Transformations
-
-**Orders table:**
-
-- Removed \[card number\] column to protect customer privacy.
-- Split datetime columns into separate date and time columns.
-- Removed rows missing an \[order date\] value.
-
-
-**dim_products table:**
-
-- Removed duplicate \[product code\] entries.
-- Cleaned the \[weight\] column by splitting numbers and units, replacing blanks and error values and converting all weights to kg using 
-```
-Weight (kg) = IF(Products[Units] <> "kg", Products[Weight]/1000, Products[Weight])
-```
-
-**dim_customers table:**
-
-- Combined the \[First Name\] and \[Last Name\] columns together to create the \[Full Name\] column.
-- Removed the \[source.name\] column.
-
-**dim_stores table:***
-
-- Replaced erroneous values in the \[Region\] column.
-- Created new columns named \[Country\] and \[Geography\] using:
-```
-Country = SWITCH(dim_stores[Country Code], "GB", "United Kingdom", "DE", "Germany", "US", "United States")
-
-Geography = dim_stores[Country Region] & ", " & dim_stores[Country]
-```
-- Created a geography hierarchy including \[Region\], \[Country\], \[Country Region\]
-
-## Calculated tables
-
-**Dates table:**
-
-- Created a date table ranging from the start of the year of the first order to the end of the year of the last shipment using:
-``` 
-Date = CALENDAR(STARTOFYEAR(Orders[Order Date]), ENDOFYEAR(Orders[Shipping Date]))
-```
-- Created columns for time measures, using ```MONTH```, ```QUARTER```, ```YEAR```, ```STARTOFMONTH```, ```STARTOFQUARTER```, ```STARTOFYEAR``` and ```WEEKDAY```.
-- Created a date hierarchy including \[Start of Year\], \[Start of Quarter\], \[Start of Month\], \[Start of Week\], \[Date\]
-
-**Measures table:**
-
-Created the following measures:
-
-- ```Total Customers = DISTINCTCOUNT(Orders[User ID])```
-- ```Total Orders = COUNT(Orders[Order Time])```
-- ```Total Quantity = SUM(Orders[Product Quantity])```
-- ```Total Profit = SUMX(Orders, Orders[Product Quantity] * (RELATED(Products[sale_price]) - RELATED(Products[cost_price])))```
-- ```Total Revenue = SUMX(Orders, Orders[Product Quantity] * RELATED(Products[sale_price]))```
-
-
-- ```Profit YTD = CALCULATE([Total Profit], Dates[Year] == YEAR(TODAY()))```
-- ```Revenue YTD = CALCULATE([Total Revenue], Dates[Year] == YEAR(TODAY()))```
-
-- ```Profit per Order = [Total Profit]/[Total Orders]```
-- ```Revenue per Customer = [Total Revenue] / [Total Customers]```
-
-
-- ```Product category selection = IF(ISFILTERED(Products[category]), CONCATENATEX(VALUES(Products[category]), Products[category], ", "), "All selected")```
-- ```Country selection = IF(ISFILTERED(dim_stores[country]), CONCATENATEX(VALUES(dim_stores[country]), dim_stores[country], ", "), "All selected")```
-
-
-- ```Previous Quarter Orders = CALCULATE([Total Orders], PREVIOUSQUARTER(Dates[Date]))```
-- ```Previous Quarter Profit = CALCULATE([Total Profit], PREVIOUSQUARTER(Dates[Date]))```
-- ```Previous Quarter Revenue = CALCULATE([Total Revenue], PREVIOUSQUARTER(Dates[Date]))```
-
-
-- ```Current Quarter Orders = CALCULATE([Total Orders], DATESINPERIOD(Dates[Date], STARTOFQUARTER(Dates[Date]), 1, QUARTER))```
-- ```Current Quarter Profits = CALCULATE([Total Profit], DATESINPERIOD(Dates[Date], STARTOFQUARTER(Dates[Date]), 1, QUARTER))```
-- ```Current Quarter Revenue = CALCULATE([Total Revenue], DATESINPERIOD(Dates[Date], STARTOFQUARTER(Dates[Date]), 1, QUARTER))```
-
-
-- ```5% Orders target = 1.05 * [Previous Quarter Orders]```
-- ```5% Profit target = 1.05 * [Previous Quarter Profit]```
-- ```5% Revenue target = 1.05 * [Previous Quarter Revenue]```
-
-
-- ```10% Orders target = 1.1 * [Current Quarter Orders]```
-- ```10% Profit target = 1.1 * [Current Quarter Profits]```
-- ```10% Revenue target = 1.1 * [Current Quarter Revenue]```
-
-- ```20% Profit target =
-  VAR CurrentYearProfit = [Profit YTD]
-  VAR PreviousYearProfit = CALCULATE([Profit YTD], DATEADD(Dates[Date], -1, YEAR))
-  VAR TargetGrowth = 0.2
-  RETURN
-  IF(ISBLANK(PreviousYearProfit), BLANK(), PreviousYearProfit * (1 + TargetGrowth))```
-
-- ```20% Revenue target =
-  
-  
-
+***
 ## Database model
 
-![Power BI model](Power_BI_model.png)
+![Power BI model](https://github.com/sgrayner/Power-BI-project/blob/main/Report_images/Power_BI_model.png)
 
+***
 ## Report pages
 
-**Navigation bar**
+### **Navigation bar**
 
-The navigation bar provides page navigation buttons to move between the pages: 'Executive Summary', 'Customer Detail', 'Product Detail' and 'Stores Map'. The 'Product Detail' page also contains a filter button which uses bookmark states to bring a filter pane onto the screen to allow the user to filter the page by country and product category. The 'Stores Drillthrough' page which is accessed from the 'Stores Map' page also contains a back button to allow the user to return back to the 'Stores Map' page.
+The navigation bar provides page navigation buttons to move between the pages of the report. Hovering over a button will tell the user which page the button links to.
 
-**Executive Summary**
+### **Executive Summary**
 
-- Headline card visuals highlighting total revenue, total profit and total customer orders.
-- Donut charts breaking down revenue by country and store type.
-- Line chart showing total revenue over a time hierarchy. Drill down capabilities through years, quarters and months.
-- Bar chart of customer orders by product category.
-- Key performance indicators for profit, revenue and customer orders over quarters. With a target of a 5% increase on the previous quarter.
-- Table showing top 10 products by quantity sold.
-- Interactions adjusted so that the bar chart and the table visuals do not filter the card visuals or KPIs.
+This page gives an overview of the company's performace as a whole, allowing executives to quickly check outcomes against targets.
 
 <img align="left" src="Top10_table_setup.png" alt="Top 10 table setup" width="500"/>
 <img align="left" src="KPI_setup.png" alt="KPI setup" width="400"/> <br><br>
@@ -151,19 +104,9 @@ The navigation bar provides page navigation buttons to move between the pages: '
 
 ![Executive Summary page](Exec_summary_page.png)
 
-**Customer Detail**
+### **Customer Detail**
 
-- Headline card visuals highlighting the number of unique customers and the average revenue from each customer.
-- Donut chart showing the proportions of sales in the United Kingdom, United States and Germany.
-- Donut chart showing the numbers of customers purchasing within each product category.
-- Line chart showing the number of customers on the y-axis against a time hierarchy on the x-axis. Drill down capabilities through years, quarters and months.
-- 10 period forecast added to the line chart.
-- Table of top 20 customers by revenue, showing full name, revenue and quantity of products ordered. Data bars added to revenue column.
-- Set of three card visual showing the name, revenue and number of orders of the top customer by revenue.
-- Data slicer allowing user to scroll through different years.
-- Table visual does not filter other visuals.
-- Product category donut chart does not filter the line chart.
-- Product category donut chart cross filters with the country donut chart.
+This page gives customer-level analyses, including a slicer to analyse across different years.
 
 <img align="left" src="Line_chart_setup.png" alt="Line chart setup" width="400"/>
 <img align="left" src="Table_setup.png" alt="Table setup" width="500"/> <br><br>
@@ -171,39 +114,42 @@ The navigation bar provides page navigation buttons to move between the pages: '
 
 ![Customer Detail page](Customer_detail_page.png)
 
-**Product Detail**
+### **Product Detail**
 
-- Gauge visuals showing current quarter performance of customer orders, revenue and profit against a target of a 10% increase from the previous quarter.
-- Area chart showing the revenue from the different categories of products over time.
-- Table of top 10 products by revenue. Including product description, revenue, number of customers, number of orders and profit per order.
-- Scatter graph of total quantity vs profit per item. Points are categorised by product category.
-- Created a slicer panel containing slicers for filtering by product category and by country. The panel can be opened and closed by action buttons which operate using bookmarks.
-- Added card visuals showing the current category and country filter selected from the slicer panel.
-- The scatter graph and table do not filter any other visuals on the page.
+This page provides an in-depth look at which products in the company's inventory are selling well. It also contains a filter pane which allows filtering by product category and country.
 
 <img align="left" src="Product_slicer_open.png" alt="Product slicer open" width="400"/> <br><br>
 
 ![Product Detail page](Product_slicer_closed.png)
 
+### **Stores Map**
 
-**Stores Map**
+This page uses a map visual to allow the user to easily check on the relative performances of stores between continents, countries and districts. It also allows users to quickly check if a region is meeting its profit target.
 
-- Map visual showing locations of stores. Drill down capabiities through region, country, country region and store code. Year-to-date profit shown as a tooltip for each location.
-- Slicer to filter by country. Select all option is enabled.
-- Ability to drill through to the **Stores Drillthrough** page showing visuals for the selected country or country region.
+### **Stores Drillthrough**
 
-**Stores Drillthrough**
+This drillthrough page gives further details on a region or store drilled through from the stores map.
 
-- Table of top 5 products by revenue showing product description, year-to-date profit, total orders and total revenue.
-- Column chart showing total orders by product category.
-- Gauges for year-to-date profit and revenue against a target of a 20% year-on-year increase.
-- Card visuals showing the currently selected store and country region the store is located in.
+### **Stores tooltip page**
 
-**Stores tooltip page**
-
-- Gauge visual showing the year-to-date profit for a selected region, country or country region.
+This page contains the gauge used for the profit target in the stores map.
 
 <img align="left" src="Stores_map_visual.png" alt="Stores map visual" width="400"/> <br><br>
 <img align="left" src="Drillthrough.png" alt="Stores drillthrough page" width="400"/> <br><br>
 
 ![Tooltip page](Tooltip.png)
+
+***
+## SQL queries
+
+In the SQL_queries folder, you can find SQL code as well as the outputs answering the following business analysis questions from a database held in a cloud server.
+
+1. How many staff are there in all of the UK stores?
+   
+2. Which month in 2022 has had the highest revenue?
+
+3. Which German store type had the highest revenue for 2022?
+
+4. Create a view where the rows are the store types and the columns are the total sales, percentage of total sales and the count of orders
+
+5. Which product category generated the most profit for the "Wiltshire, UK" region in 2021?
