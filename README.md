@@ -1,11 +1,51 @@
 # Power-BI-project
+***
+
+## Contents
+
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#project-description">Project description</a>
+    </li>
+    <li>
+      <a href="#installation-instructions">Installation instructions</a>
+    </li>
+    <li>
+      <a href="#wiki">Wiki</a>
+    </li>
+    <li>
+      <a href="#github-repository-structure">Github repository structure</a>
+    </li>
+    <li><a href="#database-model">Database model</a></li>
+    <li><a href="#report-pages">Report pages</a>
+        <ul>
+        <li><a href="#navigation-bar">Navigation bar</a></li>
+        <li><a href="#executive-summary">Executive Summary page</a></li>
+        <li><a href="#customer-detail">Customer Detail page</a></li>
+        <li><a href="#product-detail">Product Detail page</a></li>
+        <li><a href="#stores-map">Stores Map page</a></li>
+        <li><a href="#stores-drillthrough">Stores Drillthrough page</a></li>
+        <li><a href="#stores-tooltip-page">Stores Tooltip page</a></li>
+        </ul>
+    </li>
+    <li>
+      <a href="#sql-queries">SQL queries</a>
+    </li>
+  </ol>
+</details>
 
 ***
+
+<!-- PROJECT DESCRIPTION -->
+
 ## Project Description
 
 This project creates a Power BI report giving a high level summary for executives of a business as well as customer, product and region analysis. The project involves acquiring data from various sources, constructing a star-schema database model and creating an interactive, multi-page report.
 
 ***
+<!-- INSTALLATION INSTRUCTIONS -->
 ## Installation Instructions
 
 Clone the github repostory by running the following command in a terminal.
@@ -14,12 +54,14 @@ git clone https://github.com/sgrayner/EDA-Manufacturing.git
 ```
 
 ***
+<!-- WIKI -->
 ## Wiki
 
 For details on the construction and formatting of the tables and report visuals in this project, visit the wiki here: https://github.com/sgrayner/Power-BI-project/wiki
 
 ***
-## File structure
+<!-- GITHUB REPOSITORY STRUCTURE -->
+## Github repository structure
 
 ```
 ├── Report_images
@@ -83,66 +125,73 @@ For details on the construction and formatting of the tables and report visuals 
 ```
 
 ***
+<!-- DATABASE MODEL -->
 ## Database model
 
 ![Power BI model](https://github.com/sgrayner/Power-BI-project/blob/main/Report_images/Power_BI_model.png)
 
 ***
+<!-- REPORT PAGES -->
 ## Report pages
 
-### **Navigation bar**
+<img align="right" src="https://github.com/sgrayner/Power-BI-project/blob/main/Report_images/Nav_bar.png" alt="Navigation bar" width="300"/>
 
-The navigation bar provides page navigation buttons to move between the pages of the report. Hovering over a button will tell the user which page the button links to.
+<!-- NAVIGATION BAR -->
+### **Navigation bar** 
 
+The navigation bar provides page navigation buttons to move between the pages of the report. Hovering over a button will tell the user which page the button links to. 
+
+<br clear="all"/> <!-- Clears the alignment of images -->
+---
+
+
+<!-- EXECUTIVE SUMMARY -->
 ### **Executive Summary**
 
 This page gives an overview of the company's performace as a whole, allowing executives to quickly check outcomes against targets.
 
-<img align="left" src="Top10_table_setup.png" alt="Top 10 table setup" width="500"/>
-<img align="left" src="KPI_setup.png" alt="KPI setup" width="400"/> <br><br>
+![Executive Summary page](https://github.com/sgrayner/Power-BI-project/blob/main/Report_images/Executive_summary_page.png)
 
-
-![Executive Summary page](Exec_summary_page.png)
-
+<!-- CUSTOMER DETAIL -->
 ### **Customer Detail**
 
 This page gives customer-level analyses, including a slicer to analyse across different years.
 
-<img align="left" src="Line_chart_setup.png" alt="Line chart setup" width="400"/>
-<img align="left" src="Table_setup.png" alt="Table setup" width="500"/> <br><br>
+![Customer Detail page](https://github.com/sgrayner/Power-BI-project/blob/main/Report_images/Customer_detail_page.png)
 
-
-![Customer Detail page](Customer_detail_page.png)
-
+<!-- PRODUCT DETAIL -->
 ### **Product Detail**
 
 This page provides an in-depth look at which products in the company's inventory are selling well. It also contains a filter pane which allows filtering by product category and country.
 
-<img align="left" src="Product_slicer_open.png" alt="Product slicer open" width="400"/> <br><br>
+![Product Detail page](https://github.com/sgrayner/Power-BI-project/blob/main/Report_images/Product_detail_page.png)
 
-![Product Detail page](Product_slicer_closed.png)
-
+<!-- STORES MAP -->
 ### **Stores Map**
 
 This page uses a map visual to allow the user to easily check on the relative performances of stores between continents, countries and districts. It also allows users to quickly check if a region is meeting its profit target.
 
+![Stores Map page](https://github.com/sgrayner/Power-BI-project/blob/main/Report_images/Stores_map_visual.png)
+
+<!-- STORES DRILLTHROUGH -->
 ### **Stores Drillthrough**
 
 This drillthrough page gives further details on a region or store drilled through from the stores map.
 
+![Stores Drillthrough page](https://github.com/sgrayner/Power-BI-project/blob/main/Report_images/Stores_drillthrough_page.png)
+
+<!-- STORES TOOLTIP -->
 ### **Stores tooltip page**
 
 This page contains the gauge used for the profit target in the stores map.
 
-<img align="left" src="Stores_map_visual.png" alt="Stores map visual" width="400"/> <br><br>
-<img align="left" src="Drillthrough.png" alt="Stores drillthrough page" width="400"/> <br><br>
-
-![Tooltip page](Tooltip.png)
+![Stores Tooltip](https://github.com/sgrayner/Power-BI-project/blob/main/Report_images/Tooltip_page.png)
 
 ***
+<!-- SQL QUERIES -->
 ## SQL queries
 
-In the SQL_queries folder, you can find SQL code as well as the outputs answering the following business analysis questions from a database held in a cloud server.
+In the SQL_queries folder, you can find SQL code as well as the outputs answering the following business analysis questions from a database held in a cloud server. The database tables and columns are found in the SQL_tables_columns folder.
 
 1. How many staff are there in all of the UK stores?
    
